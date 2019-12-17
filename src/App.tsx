@@ -1,5 +1,5 @@
 //@ts-ignore
-import {XYPlot, XAxis, YAxis,HorizontalGridLines, LineSeries} from 'react-vis';
+import {XYPlot, XAxis, YAxis,HorizontalGridLines, LineSeries, makeWidthFlexible} from 'react-vis';
 import React, { useState, useEffect } from 'react';
 import mqtt from 'mqtt';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,8 +10,12 @@ import { withStyles,WithStyles, createStyles } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 
+const FlexibleXYPlot = makeWidthFlexible(XYPlot); 
+
+
 const styles = createStyles({
     root: {
+        padding:'5%',
         textAlign: 'center',
         // position: 'fixed',
         // top: '40%',
@@ -162,10 +166,9 @@ const App = (props: AppProps) => {
                 />
             </header>
             <Typography variant="h3">Graphs</Typography>
-            <XYPlot
+            <FlexibleXYPlot
                 xType="time"
-                width={900}
-                height={600}
+                height={300}
                 >
                 <HorizontalGridLines />
                 <XAxis />
@@ -181,7 +184,7 @@ const App = (props: AppProps) => {
                     className="motion-series"
                     data={motionData}
                 />
-            </XYPlot>
+            </FlexibleXYPlot>
         </Paper>
     );
 };
