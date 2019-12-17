@@ -164,8 +164,9 @@ const App = (props: AppProps) => {
             <Typography variant="h3">Graphs</Typography>
             <XYPlot
                 xType="time"
-                width={300}
-                height={300}>
+                width={900}
+                height={600}
+                >
                 <HorizontalGridLines />
                 <XAxis />
                 <YAxis/>
